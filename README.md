@@ -1,9 +1,15 @@
 # Project0-Samuel-F
-- An app for user to log in thier thoughts for the day
 
 ## Journal App
-- [ ] Start Screen
+
+- An app for user to log in thier thoughts for the day
+
+## Features
+
+- [ ] Start Screen Options
   - [ ] Create Entry
   - [ ] Search Entries
+    - [ ] Search by date
   - [ ] Delete Entries
+    - [ ] Delete by date
   - [ ] Close Journal
