@@ -12,6 +12,7 @@ public class Journal {
 
         while (!menu.equals("4"))
         {
+            note.Homecreen();
             System.out.println("what are we doing today? ");
             System.out.println("1 - Add an entry");
             System.out.println("2 - Search for entries");
@@ -19,6 +20,27 @@ public class Journal {
             System.out.println("4 - BYE");
             menu = scan.nextLine();
             System.out.println();
+
+            switch(menu)
+            {
+                case "1":
+                note.addEntry();
+                break;
+                //case "2":
+                //UserM.searchEntries();
+                //break;
+                //case "3":
+                //UserM.delEntries();
+                //break;
+                case "4":
+                System.out.println("Press 4 to quit program...");
+                break;
+                default:
+                System.out.println("Error");
+                break;
+
+
+            }
 
         }
     }

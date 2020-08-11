@@ -1,23 +1,23 @@
 package jar;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Entry 
 {
-    private LocalDateTime dateTime;
+    private LocalDate date;
     private String entry;
 
-    public Entry(LocalDateTime dateTime, String entry) {
-        this.dateTime = dateTime;
+    public Entry(LocalDate date, String entry) {
+        this.date = date;
         this.entry = entry;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getEntry() {
@@ -32,6 +32,6 @@ public class Entry
     @Override
     public String toString()
     {
-        return dateTime + " " + entry;
+        return date + " " + entry;
     }
 }

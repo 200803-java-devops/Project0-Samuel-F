@@ -1,6 +1,6 @@
 package jar;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Database {
@@ -14,18 +14,18 @@ public class Database {
     }
 
     //adds entry
-    public void addEntry(LocalDateTime dateTime, String entry)
+    public void addEntry(LocalDate dateTime, String entry)
     {
         entries.add(new Entry(dateTime, entry));
     }
 
     //search entry by date only
-    public ArrayList<Entry> findEntries(LocalDateTime dateTime)
+    public ArrayList<Entry> findEntries(LocalDate date)
     {
         ArrayList<Entry> find = new ArrayList<Entry>();
         for (Entry entry : entries) 
         {
-            if (entry.getDateTime().toLocalDate().equals(dateTime.toLocalDate()))
+            if (entry.getDate().equals(date))
             {
                 find.add(entry);
             }
@@ -36,9 +36,9 @@ public class Database {
 
 
     //delete entry
-    public void delEntry(LocalDateTime dateTime)
+    public void delEntry(LocalDate date)
     {
-        ArrayList<Entry> find = findEntries(dateTime);
+        ArrayList<Entry> find = findEntries(date);
         for (Entry entry : find) {
             entries.remove(entry);
         }
