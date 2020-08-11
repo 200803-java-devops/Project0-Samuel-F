@@ -7,9 +7,9 @@ public class Entry
     private LocalDate date;
     private String entry;
 
-    public Entry(LocalDate date, String entry) {
+    public Entry(LocalDate date, String text) {
         this.date = date;
-        this.entry = entry;
+        this.entry = text;
     }
 
     public LocalDate getDate() {

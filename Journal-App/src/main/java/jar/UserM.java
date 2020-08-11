@@ -3,6 +3,7 @@ package jar;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserM {
@@ -11,25 +12,24 @@ public class UserM {
     public static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("M/d/y HH:mm");
     public static DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("M/d/y");
 
-    public UserM()
-    {
+    public UserM() {
         database = new Database();
     }
 
     /**
-     * Ask the user for a date and returns this value
-     * A valid date is needed to stop asking
+     * Ask the user for a date and returns this value A valid date is needed to stop
+     * asking
+     * 
      * @return the date and time received from the user
      */
-   private LocalDate readDate()
-    {
-        System.out.println("Enter date and time as mm/dd/yyyy");
+    private LocalDate readDate() {
+        System.out.println("Enter date as mm/dd/yyyy");
         LocalDate date;
         try {
             date = LocalDate.parse(scan.nextLine(), dateFormatter);
         } catch (DateTimeParseException e) {
             System.out.println("Error invalid date entry");
-            return readDate();        
+            return readDate();
         }
         return date;
     }
@@ -37,12 +37,41 @@ public class UserM {
     /**
      * Ask user for journal entry and then add it to thee database
      */
-    public void addEntry()
-    {
+    public void addEntry() {
         LocalDate date = readDate();
         System.out.println("How was your day today...");
         String text = scan.nextLine();
         database.addEntry(date, text);
+    }
+
+    /**
+     * Provide ability to search for saved entries from the database
+     */
+    public void searchEntries() {
+        LocalDate dateTime = readDate();
+        ArrayList<Entry> entries = database.findEntries(dateTime);
+        if (entries.size() > 0)
+        {
+            System.out.println("Entries for the day: ");
+            for (Entry entry : entries) {
+                System.out.println(entry);
+            }
+        }else
+        {
+            System.out.println("No entries for the day");
+        }
+        scan.nextLine();
+        
+    }
+
+    /**
+     * Entries with date specified will be deleted from database
+     */
+    public void delEntries()
+    {
+        System.out.println("Entries with date specified will be deleted");
+        LocalDate date = readDate();
+        database.delEntry(date);
     }
 
     /**
@@ -54,5 +83,6 @@ public class UserM {
         System.out.println("Welcome to your Journal");
         System.out.println("Today is: " + LocalDate.now().format(dateFormatter));
         System.out.println();
+       //System.out.println("Today's journal entries:\n");
     }
 }

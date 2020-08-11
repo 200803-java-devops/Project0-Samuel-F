@@ -13,7 +13,7 @@ public class Journal {
         while (!menu.equals("4"))
         {
             note.Homecreen();
-            System.out.println("what are we doing today? ");
+            System.out.println("What are we doing today? ");
             System.out.println("1 - Add an entry");
             System.out.println("2 - Search for entries");
             System.out.println("3 - Delete entries");
@@ -26,14 +26,14 @@ public class Journal {
                 case "1":
                 note.addEntry();
                 break;
-                //case "2":
-                //UserM.searchEntries();
-                //break;
-                //case "3":
-                //UserM.delEntries();
-                //break;
+                case "2":
+                note.searchEntries();
+                break;
+                case "3":
+                note.delEntries();
+                break;
                 case "4":
-                System.out.println("Press 4 to quit program...");
+                System.out.println("Bye...");
                 break;
                 default:
                 System.out.println("Error");
@@ -43,6 +43,7 @@ public class Journal {
             }
 
         }
+        scan.close();
     }
     
 }

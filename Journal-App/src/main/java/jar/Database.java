@@ -10,21 +10,19 @@ public class Database {
     //init instance
     public Database()
     {
-        entries = new ArrayList<Entry>();
+        entries = new ArrayList<>();
     }
 
     //adds entry
-    public void addEntry(LocalDate dateTime, String entry)
+    public void addEntry(LocalDate date, String text)
     {
-        entries.add(new Entry(dateTime, entry));
+        entries.add(new Entry(date, text));
     }
 
     //search entry by date only
-    public ArrayList<Entry> findEntries(LocalDate date)
-    {
-        ArrayList<Entry> find = new ArrayList<Entry>();
-        for (Entry entry : entries) 
-        {
+    public ArrayList<Entry> findEntries(LocalDate date) {
+        ArrayList<Entry> find = new ArrayList<>();
+        for (Entry entry : entries) {
             if (entry.getDate().equals(date))
             {
                 find.add(entry);
