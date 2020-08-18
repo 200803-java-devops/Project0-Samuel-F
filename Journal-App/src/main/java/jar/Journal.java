@@ -8,9 +8,8 @@ public class Journal {
     public static void main( String[] args )
     {
         Scanner scan = new Scanner(System.in);
-
-        DBconnect test = new DBconnect(); 
-        Connection connection = test.getConnect();
+        
+        Connection connection = DBconnect.getConnect();
         System.out.println(connection);
 
         UserM note = new UserM();

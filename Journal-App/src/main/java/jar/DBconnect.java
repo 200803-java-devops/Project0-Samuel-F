@@ -12,16 +12,16 @@ public class DBconnect {
 	private static final String url = "jdbc:postgresql://localhost:5431/journaldb";
 	private static Connection connection;
 
-    public Connection getConnect() {
+    public static Connection getConnect() {
         if(connection == null)
         {
             try {
                 Class.forName("org.postgresql.Driver");
                 connection = DriverManager.getConnection(url, username, password);
                 System.out.println("Connection Successful");
-            } catch (SQLException se) {
+            } catch (SQLException sqe) {
                 System.out.println("Connection failed");
-                se.printStackTrace();
+                sqe.printStackTrace();
             }
             catch(Exception e){
                 System.out.println("Could not load driver");
