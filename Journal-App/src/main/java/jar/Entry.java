@@ -7,20 +7,24 @@ public class Entry
     private LocalDate date;
     private String entry;
 
-    public Entry(LocalDate date, String text) {
+    public Entry(LocalDate date, String text) 
+    {
         this.date = date;
         this.entry = text;
     }
 
-    public LocalDate getDate() {
+    public LocalDate getDate() 
+    {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDate date) 
+    {
         this.date = date;
     }
 
-    public String getEntry() {
+    public String getEntry() 
+    {
         return entry;
     }
 
@@ -32,6 +36,6 @@ public class Entry
     @Override
     public String toString()
     {
-        return date + " " + entry;
+        return date + ":- " + entry;
     }
 }

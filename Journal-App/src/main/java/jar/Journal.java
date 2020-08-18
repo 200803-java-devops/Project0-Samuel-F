@@ -1,11 +1,17 @@
 package jar;
 
+import java.sql.Connection;
 import java.util.Scanner;
+
 
 public class Journal {
     public static void main( String[] args )
     {
         Scanner scan = new Scanner(System.in);
+
+        DBconnect test = new DBconnect(); 
+        Connection connection = test.getConnect();
+        System.out.println(connection);
 
         UserM note = new UserM();
         String menu = "0";

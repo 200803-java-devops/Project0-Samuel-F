@@ -35,7 +35,7 @@ public class UserM {
     }
 
     /**
-     * Ask user for journal entry and then add it to thee database
+     * Ask user for journal entry and then add it to the database
      */
     public void addEntry() {
         LocalDate date = readDate();
