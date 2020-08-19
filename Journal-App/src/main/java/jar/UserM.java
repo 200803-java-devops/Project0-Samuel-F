@@ -1,5 +1,6 @@
 package jar;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -12,13 +13,13 @@ public class UserM {
     public static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("M/d/y HH:mm");
     public static DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("M/d/y");
 
-    public UserM() {
+    public UserM() throws SQLException {
         database = new Database();
     }
 
     /**
-     * Ask the user for a date and returns this value A valid date is needed to stop
-     * asking
+     * Ask the user for a date and returns this value 
+     * A valid date is needed to stop asking
      * 
      * @return the date and time received from the user
      */

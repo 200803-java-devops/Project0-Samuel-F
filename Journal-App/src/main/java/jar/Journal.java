@@ -1,6 +1,6 @@
 package jar;
 
-import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 
@@ -8,11 +8,15 @@ public class Journal {
     public static void main( String[] args )
     {
         Scanner scan = new Scanner(System.in);
-        
-        Connection connection = DBconnect.getConnect();
-        System.out.println(connection);
 
-        UserM note = new UserM();
+        UserM note = null;
+        try {
+            note = new UserM();
+        } catch (SQLException e) {
+           e.printStackTrace();
+           return;
+        }
+
         String menu = "0";
 
         while (!menu.equals("4"))

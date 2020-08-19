@@ -1,52 +1,77 @@
 package jar;
 
+import java.sql.Statement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
+
+
+
 
 public class Database {
-    static Connection connection = null;
-    static PreparedStatement statement = null;
-    //entries
-    private List<Entry> entries;
+    Connection connection;
 
-    //init instance
-    public Database()
+    /**
+     * init instance
+     * @throws SQLException
+     */
+    public Database() throws SQLException
     {
-        entries = new ArrayList<>();
+        connection = DBconnect.getConnect();
     }
 
     //adds entry
     public void addEntry(LocalDate date, String text)
     {
-        entries.add(new Entry(date, text));
+        try {
+            Statement statement = connection.createStatement();
+            String sql = "INSERT INTO journal VALUES('" + date + "', '" + text + "')";
+            //sql += "'" + date + "',";
+            //sql += "'" + text + "')";
+            statement.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    //search entry by date only
+    /**
+     * Search entry by date only
+     * @param date
+     * @return
+     */
     public ArrayList<Entry> findEntries(LocalDate date) 
     {
         ArrayList<Entry> find = new ArrayList<>();
-        for (Entry entry : entries) 
-        {
-            if (entry.getDate().equals(date))
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM journal WHERE entrydate = '" + date + "'");
+            while(rs.next())
             {
-                find.add(entry);
+                find.add(new Entry(date, rs.getString("journalentry")));
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return find;
     }
 
 
 
-    //delete entry
+    /**
+     * Delete entry
+     * @param date
+     */
     public void delEntry(LocalDate date)
     {
-        ArrayList<Entry> find = findEntries(date);
-        for (Entry entry : find) 
-        {
-            entries.remove(entry);
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM journal WHERE entrydate = '" + date + "'");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
     
