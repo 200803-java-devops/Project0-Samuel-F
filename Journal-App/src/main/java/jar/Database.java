@@ -30,6 +30,8 @@ public class Database {
             String sql = "INSERT INTO journal VALUES('" + date + "', '" + text + "')";
             //sql += "'" + date + "',";
             //sql += "'" + text + "')";
+            System.out.println();
+            System.out.println("Entry saved");
             statement.executeUpdate(sql);
 
         } catch (SQLException e) {
@@ -69,6 +71,8 @@ public class Database {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate("DELETE FROM journal WHERE entrydate = '" + date + "'");
+            System.out.println();
+            System.out.println("Entry deleted");
 
         } catch (SQLException e) {
             e.printStackTrace();
